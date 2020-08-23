@@ -15,12 +15,23 @@ class Dashboard extends Component {
                 <div className="dashboard-content-div">
                     <div className="header-title">In Progress</div>
                     <div className="search-content-content-div">
-                        <Bounty2></Bounty2>
+                        <Bounty2 review={false}></Bounty2>
+                        <Bounty2 review={false}></Bounty2>
+                        <Bounty2 review={false}></Bounty2>
+                        <Bounty2 review={false}></Bounty2>
+
                     </div>
                 </div>
                 <div style={{width : "80px"}}></div>
                 <div className="dashboard-content-div">
                     <div className="header-title">Requires Review</div>
+                    <div className="search-content-content-div">
+                        <Bounty2 review={true}></Bounty2>
+                        <Bounty2 review={true}></Bounty2>
+                        <Bounty2 review={true}></Bounty2>
+                        <Bounty2 review={true}></Bounty2>
+
+                    </div>
                 </div>
             </div>
         );

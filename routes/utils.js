@@ -21,14 +21,7 @@ const timeStamp = () => {
 };
 
 const get = async hash => {
-    // var requestOptions = {
-    //     method: 'GET',
-    //     redirect: 'follow'
-    // };
-      
-    // const response = await fetch("https://ipfs.io/ipfs/" + hash, requestOptions)
-    // return response;
-    const URL = "https://ipfs.io/ipfs/" + hash;
+    const URL = "https://gateway.ipfs.io/ipfs/" + hash;
     try {
         const response = await axios.get(URL);
         return response.data;
@@ -38,8 +31,8 @@ const get = async hash => {
 }
 
 const createNewAccount = async (walletid, gitid) => {
-    const ipfshash = await Contract.get();
-    // const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
+    // const ipfshash = await Contract.get();
+    const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
 
     if (ipfshash == 'QmbJWAESqCsf4RFCqEY7jecCashj8usXiyDNfKtZCwwzGb') { // Empty
         let MDB = {};
@@ -85,8 +78,8 @@ const createNewAccount = async (walletid, gitid) => {
 };
 
 const createBounty = async (bountyname, gitid, walletid, desc, amount, repo) => {
-    const ipfshash = await Contract.get();
-    // const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
+    // const ipfshash = await Contract.get();
+    const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
     if (ipfshash == 'QmbJWAESqCsf4RFCqEY7jecCashj8usXiyDNfKtZCwwzGb') { // Empty
         let MDB = {};
         const timestamp = timeStamp();
@@ -148,30 +141,29 @@ const createBounty = async (bountyname, gitid, walletid, desc, amount, repo) => 
 
 const updateUserData = async (walletid, bountyCompleted, newMoney) => {
     // const ipfshash = await Contract.get();
-    const ipfshash = 'QmXtW6EhfUt8mFENYsUG9iBsgU5Pzy2qZUQ5NHVXEfygB1';
+    const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
     let obj = await get(ipfshash);
-    console.log(obj);
     let MDB = obj;
-    // if (bountyCompleted) {
-    //     MDB["accounts"][walletid]["bountiesCompleted"] = obj["accounts"][walletid]["bountiesCompleted"] + 1;
-    // };
-    // MDB["accounts"][walletid]["bankAccount"] = obj["accounts"][walletid]["bankAccount"] + newMoney;
-    // let buffer = Buffer.from(JSON.stringify(MDB));
+    if (bountyCompleted) {
+        MDB["accounts"][walletid]["bountiesCompleted"] = obj["accounts"][walletid]["bountiesCompleted"] + 1;
+    };
+    MDB["accounts"][walletid]["bankAccount"] = obj["accounts"][walletid]["bankAccount"] + newMoney;
+    let buffer = Buffer.from(JSON.stringify(MDB));
 
-    // return new Promise((resolve, reject) => {
-    //     ipfs.files.add(buffer, async (err, res) => {
-    //         if (err) console.error(err);
-    //         else {
-    //             const hash = await res[0].hash;
-    //             resolve(hash);
-    //         };
-    //     });
-    // });
+    return new Promise((resolve, reject) => {
+        ipfs.files.add(buffer, async (err, res) => {
+            if (err) console.error(err);
+            else {
+                const hash = await res[0].hash;
+                resolve(hash);
+            };
+        });
+    });
 };
 
 const updateBountyStatus = async (bountyname, status) => {
-    const ipfshash = await Contract.get();
-    // const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
+    // const ipfshash = await Contract.get();
+    const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
     let MDB = await get(ipfshash);
     MDB["bounties"][bountyname]["status"] = status;
 
@@ -191,8 +183,8 @@ const updateBountyStatus = async (bountyname, status) => {
 };
 
 const donateToExistingBounty = async (bountyname, updateValue) => {
-    const ipfshash = await Contract.get();
-    // const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
+    // const ipfshash = await Contract.get();
+    const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
     let MDB = await get(ipfshash);
     MDB["bounties"][bountyname]["amount"] += updateValue;
 
@@ -211,9 +203,30 @@ const donateToExistingBounty = async (bountyname, updateValue) => {
     });
 };
 
+const retrieveUserData = async (walletid) => {
+    // const ipfshash = await Contract.get();
+    const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
+    const data = await get(ipfshash);
+    return data["accounts"][walletid];
+};
+
+const getAllBounties = async () => {
+    // const ipfshash = await Contract.get();
+    const ipfshash = 'QmXtW6EhfUt8mFENYsUG9iBsgU5Pzy2qZUQ5NHVXEfygB1';
+    const data = await get(ipfshash);
+    return data["bounties"];
+};
+
+const retrieveBounty = async (bountyname) => {
+    // const ipfshash = await Contract.get();
+    const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
+    const data = await get(ipfshash);
+    return data["bounties"][bountyname];
+};
+
 const gitToWallet = async (gitid) => {
-    const ipfshash = await Contract.get();
-    // const ipfshash = 'QmXtW6EhfUt8mFENYsUG9iBsgU5Pzy2qZUQ5NHVXEfygB1';
+    // const ipfshash = await Contract.get();
+    const ipfshash = 'QmXtW6EhfUt8mFENYsUG9iBsgU5Pzy2qZUQ5NHVXEfygB1';
     const data = await get(ipfshash);
     const accounts = Object.keys(data["accounts"]);
     for (let i=0; i<accounts.length; i++) {
@@ -223,40 +236,15 @@ const gitToWallet = async (gitid) => {
     }
     return "Not Found";
 };
-
-const retrieveUserData = async (walletid) => {
-    const ipfshash = await Contract.get();
-    // const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
-    const data = await get(ipfshash);
-    return data["accounts"][walletid];
-};
-
-const getAllBounties = async () => {
-    const ipfshash = await Contract.get();
-    // const ipfshash = 'QmXtW6EhfUt8mFENYsUG9iBsgU5Pzy2qZUQ5NHVXEfygB1';
-    const data = await get(ipfshash);
-    // const ipfshash = 'QmYQMYwFSMBfigdhHKNx51TT2sp1iUmRyJS1Enfy5CLeUX';
-    return data["bounties"][bountyname];
-};
- // tf did u do
-    // console.log(await createNewAccount('0xsamsamsam', 'samsamsam'))
-    // console.log(await createBounty('BOUNTY#2', 'adityakeerthi', '0xaditya', "Description LOL", 300, "https://github.com/github/gitignore")) // async (bountyname, gitid, userwalletid, desc, amount, repo)
-    // console.log(await get('QmcqKLz9Ec5NPshVqJ7sddvEaTcBvegCxgGc7qt3GfGTUk'))
-    // console.log(await retrieveUserData('0xaditya'))
-    // console.log(await getAllBounties())
-    // console.log(await retrieveBounty('bounty#1'))
-    // console.log(await updateUserData('0xaditya', true, 100)) // walletid, bountyCompleted, newMoney
-    // console.log(await updateBountyStatus('BOUNTY#2', 'Awaiting')) // bountyname, status
-    // console.log(await donateToExistingBounty('BOUNTY#2', 305)) // bountyname, status
 module.exports = {
+    updateUserData,
+    updateBountyStatus,
+    retrieveUserData,
     retrieveBounty,
     getAllBounties,
+    gitToWallet,
     donateToExistingBounty,
     updateBountyStatus,
-    updateUserData,
     createBounty,
-    createNewAccount,
-    gitToWallet,
-    get,
-    timeStamp
+    createNewAccount
 };

@@ -14,7 +14,7 @@ class Bounty extends Component {
     }
     render() { 
         return (
-            <div className="bounty-card-div">
+            <div className="bounty2-card-div">
                 <div className="bounty2-left-div">
                     <div className="bounty-title-div">Google Chrome eat too much RAM</div>
                     <div className="bounty2-desc-div">This is the description of this google chrome issue. This is supposed to a description and I am using this to fill up the empty space. Fill some more space here. This is supposed to a description and I am using this to fill up the empty space.</div>
@@ -24,7 +24,14 @@ class Bounty extends Component {
                         <div style={{marginRight : "8px", fontWeight : 600}}>45 ETH</div>
                         <div style={{flex : 1, display : "flex", flexDirection : "column", justifyContent : "flex-end", alignItems : "flex-end"}}>
                             <Button type="primary" icon={<GithubOutlined></GithubOutlined>} style={{marginRight : "8px"}}></Button>
-                            <Button type="secondary">Contribute</Button>
+                            <div style={{height : "4px"}}></div>
+                            {
+                                this.props.review
+                                ?
+                                <Button type="secondary" style={{marginRight : "8px", marginBottom : "8px"}}>Report</Button>
+                                :
+                                <Button type="secondary" style={{marginRight : "8px", marginBottom : "8px"}}>Contribute</Button>
+                            }
                         </div>
                     </div>
                     {/* <div style={{flex : 1, display: "flex", justifyContent : "flex-end", alignItems : "flex-end", marginBottom : "10px", marginRight : "10px"}}>

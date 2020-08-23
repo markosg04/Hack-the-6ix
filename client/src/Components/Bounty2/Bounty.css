@@ -1,8 +1,8 @@
-.bounty-card-div{
+.bounty2-card-div{
     height: fit-content;
-    min-height: 80px;
+    min-height: 170px;
     background: #3f4448;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     border-radius: 5px;
     display: flex;
 }

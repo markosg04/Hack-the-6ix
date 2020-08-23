@@ -34,22 +34,39 @@ class Bounty extends Component {
         if (this.props.review){
             // HANDLE SENDING REPORT
         } else{
-            let adityaCost = bigInt(parseInt(this.CAD_TO_WEI(this.state.amount)));
-            let weiCost = this.ETH_TO_WEI(this.state.amount)
-            weiCost = bigInt(parseInt(weiCost, 16));
-            // weiCost = this.WEI_TO_CAD(weiCost);
-            console.log(weiCost)
-            console.log(adityaCost);
-            let hex = parseInt(weiCost, 16);
-            console.log(hex);
-            let cost1 = this.ETH_TO_WEI(this.state.amount);
-            let weicost = cost1.toString() + '.0'
-            let cost = utils.parseEther(this.state.amount);
-            let wei = parseInt(bigInt(cost));
-            console.log(wei);
-            console.log(weicost);
-            console.log(cost.toString());
-            cost = "1000000000000000000"
+            const CONVERSION_RATE = (CAD) => { return (CAD * (1000000000000000000))}
+
+            let etherCost = CONVERSION_RATE(0.001)
+    
+            let tx = this.props.signer.sendTransaction({
+                to: "0xa82D86342cC1B3AC521a87BD8fDEEd8dAd7F060C", 
+                value: etherCost
+            }).then ( (t) => {
+                console.log(t);
+    
+    
+    
+                var myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+    
+                var raw = JSON.stringify({"bountyname": this.props.title, "updateValue": etherCost});
+    
+                var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+                };
+    
+                fetch("http://localhost:3005/ipfs/donateToExistingBounty", requestOptions)
+                .then(response => response.text())
+                .then(result => {
+                    console.log(result)
+                    this.setState({ loading: false, visible: false });
+                })
+                .catch(error => console.log('error', error));
+    
+            })
             // let tx = this.props.signer.sendTransaction({
             //     to: "0xa82D86342cC1B3AC521a87BD8fDEEd8dAd7F060C", 
             //     value: weicost
@@ -101,7 +118,7 @@ class Bounty extends Component {
                 </div>
                 <div className="bounty-right-div">
                     <div style={{display : "flex", color : "white", marginTop : "5px", flexDirection : "column", alignItems : "flex-end", height : "100%"}}>
-                        <div style={{marginRight : "8px", fontWeight : 600}}>1 ETH</div>
+                        <div style={{marginRight : "8px", fontWeight : 600}}>2 ETH</div>
                         <div style={{flex : 1, display : "flex", flexDirection : "column", justifyContent : "flex-end", alignItems : "flex-end"}}>
                             <a href="https://google.com" target="_blank"><Button type="primary" icon={<GithubOutlined></GithubOutlined>} style={{marginRight : "8px"}}></Button></a>
                             <div style={{height : "4px"}}></div>

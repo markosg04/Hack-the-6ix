@@ -20,7 +20,7 @@ class Create extends Component {
     onSubmit(){
         const CONVERSION_RATE = (CAD) => { return (CAD * (1000000000000000000))}
 
-        let etherCost = CONVERSION_RATE(0.0000000000001)
+        let etherCost = CONVERSION_RATE(0.001)
 
         let tx = this.props.signer.sendTransaction({
             to: "0xa82D86342cC1B3AC521a87BD8fDEEd8dAd7F060C", 
@@ -77,23 +77,17 @@ class Create extends Component {
                             <div style={{width : "400px", marginTop : "20px", display : "flex", flexDirection : "column", alignItems : "flex-start"}}>
                                 <div style={{color : "white", fontSize : "12px"}}>Repository</div>
                                 <Select defaultValue="Select a Repository" style={{ width: 400 }}>
-                                    <Option value="jack">Jack</Option>
-                                    <Option value="lucy">Lucy</Option>
-                                    <Option value="dick">Dick</Option>
-                                    <Option value="tard">Tard</Option>
-                                    <Option value="dam">Dam</Option>
-                                    <Option value="jequavis">Jequavis</Option>
+                                    <Option value="jack">Hack-the-6ix</Option>
+                                    <Option value="lucy">Hack-The-Northeast</Option>
+                                    <Option value="dick">DAO-Streaming-Platform</Option>
                                 </Select>
                             </div>
                             <div style={{width : "400px", marginTop : "20px", display : "flex", flexDirection : "column", alignItems : "flex-start"}}>
                                 <div style={{color : "white", fontSize : "12px"}}>Issue/Pull Request</div>
                                 <Select defaultValue="Select an Issue/PR" style={{ width: 400 }}>
-                                    <Option value="jack">Jack</Option>
-                                    <Option value="lucy">Lucy</Option>
-                                    <Option value="dick">Dick</Option>
-                                    <Option value="tard">Tard</Option>
-                                    <Option value="dam">Dam</Option>
-                                    <Option value="jequavis">Jequavis</Option>
+                                    <Option value="jack">#14</Option>
+                                    <Option value="lucy">#2</Option>
+                                    <Option value="dick">#8</Option>
                                 </Select>
                             </div>
                         </div>

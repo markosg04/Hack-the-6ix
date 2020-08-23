@@ -40,7 +40,7 @@ class Dashboard extends Component {
                 <div className="dashboard-content-div">
                     <div className="header-title">In Progress</div>
                     <div className="search-content-content-div">
-                        <Bounty2 signer={this.props.signer} review={false}></Bounty2>
+                        {/* <Bounty2 signer={this.props.signer} review={false}></Bounty2> */}
                         {/* <Bounty2 signer={this.props.signer} review={false}></Bounty2>
                         <Bounty2 signer={this.props.signer} review={false}></Bounty2>
                         <Bounty2 signer={this.props.signer} review={false}></Bounty2> */}
@@ -51,7 +51,7 @@ class Dashboard extends Component {
                 <div className="dashboard-content-div">
                     <div className="header-title">Requires Review</div>
                     <div className="search-content-content-div">
-                        {/* <Bounty2 signer={this.props.signer} review={true}></Bounty2> */}
+                        <Bounty2 signer={this.props.signer} review={true}></Bounty2>
                         {/* <Bounty2 signer={this.props.signer} review={true}></Bounty2>
                         <Bounty2 signer={this.props.signer} review={true}></Bounty2>
                         <Bounty2 signer={this.props.signer} review={true}></Bounty2> */}

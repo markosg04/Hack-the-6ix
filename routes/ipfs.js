@@ -65,7 +65,7 @@ router.post('/retrieveBounty', async (req, res) => {
 });
 
 router.get('/resetIpfsHash', async (req, res) => { // Debug Purposes
-    r = await Contract.set('QmbJWAESqCsf4RFCqEY7jecCashj8usXiyDNfKtZCwwzGb');
+    r = await Contract.set('QmWBbwxbCeZv8UJrEo33CGSz2dKGcJyWLB8LvXTizaRvVn');
     res.send('Success');
 });
 

@@ -31,7 +31,7 @@ class Bounty extends Component {
 
         const CONVERSION_RATE = (CAD) => { return (CAD * (1000000000000000000))}
 
-        let etherCost = CONVERSION_RATE(this.state.amount)
+        let etherCost = CONVERSION_RATE(0.001)
 
         let tx = this.props.signer.sendTransaction({
             to: "0xa82D86342cC1B3AC521a87BD8fDEEd8dAd7F060C", 
@@ -41,25 +41,8 @@ class Bounty extends Component {
 
 
 
-            var myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json");
-
-            var raw = JSON.stringify({"bountyname": this.props.title, "updateValue": etherCost});
-
-            var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: raw,
-            redirect: 'follow'
-            };
-
-            fetch("http://localhost:3005/ipfs/donateToExistingBounty", requestOptions)
-            .then(response => response.text())
-            .then(result => {
-                console.log(result)
-                this.setState({ loading: false, visible: false });
-            })
-            .catch(error => console.log('error', error));
+            this.setState({ loading: false, visible: false });
+    
 
         })
           

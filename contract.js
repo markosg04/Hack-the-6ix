@@ -67,4 +67,4 @@ module.exports.abi = [
       "type": "function"
     }
   ];
-module.exports.address = '0xDBa0ebAa4BA4FEE31778526f47A3Aee3c028060B';
+module.exports.address = '0xa82D86342cC1B3AC521a87BD8fDEEd8dAd7F060C';

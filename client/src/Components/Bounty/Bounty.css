@@ -1,0 +1,34 @@
+.bounty-card-div{
+    height: fit-content;
+    min-height: 80px;
+    background: #3f4448;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: flex;
+}
+
+.bounty-title-div{
+    text-align: left;
+    color: white;
+    margin-top: 5px;
+    font-weight: 500;
+}
+
+.bounty-desc-div{
+    text-align: left;
+    color: rgb(165, 165, 165);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+}
+
+.bounty-left-div{
+    width: 550px;
+    margin-left: 10px;
+}
+
+.bounty-right-div{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}

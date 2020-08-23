@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.2.2",
+    "antd": "^4.5.4",
+    "craco": "0.0.3",
+    "craco-less": "^1.17.0",
     "ethers": "^5.0.8",
     "react": "16.11.0",
     "react-dom": "16.11.0",
@@ -11,10 +15,10 @@
     "web3": "1.2.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject"
   },
   "eslintConfig": {
     "extends": "react-app"

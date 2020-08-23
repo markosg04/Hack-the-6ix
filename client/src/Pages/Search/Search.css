@@ -1,0 +1,15 @@
+.search-content-content-div{
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none; 
+}
+
+.search-content-content-div::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}

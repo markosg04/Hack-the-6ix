@@ -1,0 +1,11 @@
+.dashboard-content-div{
+    width: 400px;
+    height: fit-content;
+    min-height: 500px;
+    background: #24292e;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+
+}

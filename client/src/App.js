@@ -2,12 +2,17 @@ import React, { Component } from "react";
 import { ethers } from 'ethers';
 import getWeb3 from "./getWeb3";
 
-import "./App.css";
+import "./App.less";
 
-import {BrowserRouter, Route} from 'react-router-dom'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import Search from "./Pages/Search/Search"
+import Create from "./Pages/Create/Create"
+import Dashboard from "./Pages/Dashboard/Dashboard"
+import Navbar from "./Components/Navbarr/Navbarr"
+
 
 class App extends Component {
-  state = { storageValue: 0, web3: null, accounts: null, contract: null };
+  state = { storageValue: 0, web3: null, accounts: null, contract: null, githubSignedIn : false };
 
   componentDidMount = async () => {
     try {
@@ -38,9 +43,22 @@ class App extends Component {
       return <div> Loading Web3, accounts, and contract... </div>;
     }
     return (
-      <div className="App">
-        
-      </div>
+      <BrowserRouter>
+        <div className="App">
+          <Navbar></Navbar>
+          <Switch>
+            <Route path="/browse">
+              <Search></Search>
+            </Route>
+            <Route path="/create">
+              <Create></Create>
+            </Route>
+            <Route path="/">
+              <Dashboard></Dashboard>
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

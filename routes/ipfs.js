@@ -92,4 +92,8 @@ router.post('/payment', async (req, res) => {
     };
 })
 
+router.post('/sendAPayment', async (req, res) => {
+
+});
+
 module.exports = router;

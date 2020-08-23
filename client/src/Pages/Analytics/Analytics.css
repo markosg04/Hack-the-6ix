@@ -2,10 +2,16 @@
     width: 800px;
     height: fit-content;
     min-height: 350px;
+    max-height: 350px;
     background: #24292e;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 
+}
+
+.nivo_calendar_month_legend{
+    color: white;
+    background: white;
 }

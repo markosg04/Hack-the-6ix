@@ -24,7 +24,7 @@ class Dashboard extends Component {
         body: raw,
         redirect: 'follow'
         };
-        console.log(account)
+        // console.log(account)
 
         fetch("http://localhost:3005/ipfs/retrieveUserData", requestOptions)
         .then(response => response.text())
@@ -40,10 +40,10 @@ class Dashboard extends Component {
                 <div className="dashboard-content-div">
                     <div className="header-title">In Progress</div>
                     <div className="search-content-content-div">
-                        <Bounty2 review={false}></Bounty2>
-                        <Bounty2 review={false}></Bounty2>
-                        <Bounty2 review={false}></Bounty2>
-                        <Bounty2 review={false}></Bounty2>
+                        <Bounty2 signer={this.props.signer} review={false}></Bounty2>
+                        {/* <Bounty2 signer={this.props.signer} review={false}></Bounty2>
+                        <Bounty2 signer={this.props.signer} review={false}></Bounty2>
+                        <Bounty2 signer={this.props.signer} review={false}></Bounty2> */}
 
                     </div>
                 </div>
@@ -51,10 +51,10 @@ class Dashboard extends Component {
                 <div className="dashboard-content-div">
                     <div className="header-title">Requires Review</div>
                     <div className="search-content-content-div">
-                        <Bounty2 review={true}></Bounty2>
-                        <Bounty2 review={true}></Bounty2>
-                        <Bounty2 review={true}></Bounty2>
-                        <Bounty2 review={true}></Bounty2>
+                        {/* <Bounty2 signer={this.props.signer} review={true}></Bounty2> */}
+                        {/* <Bounty2 signer={this.props.signer} review={true}></Bounty2>
+                        <Bounty2 signer={this.props.signer} review={true}></Bounty2>
+                        <Bounty2 signer={this.props.signer} review={true}></Bounty2> */}
 
                     </div>
                 </div>

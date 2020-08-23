@@ -9,6 +9,7 @@
     "craco": "0.0.3",
     "craco-less": "^1.17.0",
     "ethers": "^5.0.8",
+    "nivo": "^0.31.0",
     "react": "16.11.0",
     "react-dom": "16.11.0",
     "react-router-dom": "^5.2.0",

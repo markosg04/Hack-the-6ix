@@ -23,7 +23,9 @@ async function getUserRepos () {
 }
 
 async function auth () {
-    const res = await fetch(`https://github.com/login/oauth/authorize?client_id=${clientId}`)
+    const res = await fetch(`https://github.com/login/oauth/authorize?client_id=${clientId}&scope=repo%20user`)
+
+    // res = await fetch("https://localhost:3000/user/signin/callback")
     console.log(await res.text())
 }
 

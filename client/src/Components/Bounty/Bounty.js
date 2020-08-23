@@ -33,38 +33,37 @@ class Bounty extends Component {
 
         let etherCost = CONVERSION_RATE(this.state.amount)
 
-        try {
-            let tx = this.props.signer.sendTransaction({
-                to: "0xDBa0ebAa4BA4FEE31778526f47A3Aee3c028060B", 
-                value: etherCost
-            }).then ( (t) => {
-                console.log(t);
-                var myHeaders = new Headers();
-                myHeaders.append("Content-Type", "application/json");
+        let tx = this.props.signer.sendTransaction({
+            to: "0xa82D86342cC1B3AC521a87BD8fDEEd8dAd7F060C", 
+            value: etherCost
+        }).then ( (t) => {
+            console.log(t);
 
-                var raw = JSON.stringify({"bountyname": this.props.title, "updateValue": etherCost});
 
-                var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: raw,
-                redirect: 'follow'
-                };
 
-                fetch("http://localhost:3005/ipfs/donateToExistingBounty", requestOptions)
-                .then(response => response.text())
-                .then(result => {
-                    console.log(result)
-                    this.setState({ loading: false, visible: false });
-                })
-                .catch(error => console.log('error', error));
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
 
+            var raw = JSON.stringify({"bountyname": this.props.title, "updateValue": etherCost});
+
+            var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+            };
+
+            fetch("http://localhost:3005/ipfs/donateToExistingBounty", requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                console.log(result)
+                this.setState({ loading: false, visible: false });
             })
+            .catch(error => console.log('error', error));
+
+        })
           
-        } catch (error) {
-          console.log('fucking overflow')
-            
-        }
+        
         // let tx = this.props.signer.sendTransaction({
         //     to: "0xDBa0ebAa4BA4FEE31778526f47A3Aee3c028060B", 
         //     value: etherCost

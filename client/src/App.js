@@ -58,7 +58,7 @@ class App extends Component {
               <Analytics signer={(new ethers.providers.Web3Provider(window.ethereum)).getSigner()}></Analytics>
             </Route>
             <Route path="/">
-              <Dashboard account={this.state.account}></Dashboard>
+              <Dashboard signer={(new ethers.providers.Web3Provider(window.ethereum)).getSigner()} account={this.state.account}></Dashboard>
             </Route>
           </Switch>
         </div>

@@ -17,7 +17,8 @@ class Navbarr extends Component {
     render() { 
         return (
             <div className="navbar-div">
-                <div className="navbar-title">BountAI</div>
+                {/* <image src="https://rudejuveniledriverwrapper.adityakeerthi.repl.co/GitBounty.png" /> */}
+                <div className="navbar-title">GitBounty</div>
                 <div className="navbar-links-div">
                     <Link className="navbar-link-item" to="/dashboard"><AppstoreOutlined /><div style={{width: "10px"}}></div>Dashboard</Link>
                     <Link className="navbar-link-item" to="/browse"><SearchOutlined /><div style={{width: "10px"}}></div>Browse</Link>

@@ -9,6 +9,8 @@ var usersRouter = require('./routes/users');
 var ipfsRouter = require('./routes/ipfs')
 const cors = require('cors')
 
+const passport = require('passport');
+
 var app = express();
 app.use(cors())
 // view engine setup
@@ -43,5 +45,14 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.get("/users/signin/callback", (req, res, next) => {
+  console.log(req)
+
+  return res.send(({
+    success: false,
+    message: "test"
+  }))
+})
 
 module.exports = app;

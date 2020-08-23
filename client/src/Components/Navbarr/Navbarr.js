@@ -22,10 +22,10 @@ class Navbarr extends Component {
                     <Link className="navbar-link-item" to="/dashboard"><AppstoreOutlined /><div style={{width: "10px"}}></div>Dashboard</Link>
                     <Link className="navbar-link-item" to="/browse"><SearchOutlined /><div style={{width: "10px"}}></div>Browse</Link>
                     <Link className="navbar-link-item" to="/create"><BankOutlined /><div style={{width: "10px"}}></div>Create</Link>
-                    <Link className="navbar-link-item" to="/graph"><BarChartOutlined /><div style={{width: "10px"}}></div>Analytics</Link>
+                    <Link className="navbar-link-item" to="/analytics"><BarChartOutlined /><div style={{width: "10px"}}></div>Analytics</Link>
                 </div>
                 <div className="navbar-footer">
-                    <Button type="primary" icon={<GithubOutlined />}>Link to GitHub Account</Button>
+                    <a href="https://github.com/login/oauth/authorize?client_id=dcf9c523dbd3438422b7"><Button type="primary" icon={<GithubOutlined />}>Link to GitHub Account</Button></a>
                 </div>
             </div>
         );

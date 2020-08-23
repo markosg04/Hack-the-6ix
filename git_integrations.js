@@ -23,10 +23,7 @@ async function getUserRepos () {
 }
 
 async function auth () {
-    const requestOptions = {
-        client_id: clientId
-    }
-    const res = await fetch("https://github.com/login/oauth/authorize", requestOptions)
+    const res = await fetch(`https://github.com/login/oauth/authorize?client_id=${clientId}`)
     console.log(await res.text())
 }
 

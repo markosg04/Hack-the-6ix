@@ -13,6 +13,23 @@ class Create extends Component {
         super(props);
         this.state = {  }
     } 
+
+    onSubmit(){
+        const CONVERSION_RATE = (CAD) => { return (CAD * (1000000000000000000))}
+
+        let etherCost = CONVERSION_RATE(this.state.amount)
+
+        let tx = this.props.signer.sendTransaction({
+            to: "0xDBa0ebAa4BA4FEE31778526f47A3Aee3c028060B", 
+            value: etherCost
+        }).then ( (t) => {
+            console.log(t);
+
+        })
+          
+       
+    } 
+
     render() { 
         return (
             <div className="content-div">
@@ -29,7 +46,7 @@ class Create extends Component {
                                 <TextArea placeholder="textarea with clear icon" allowClear />
                             </div>
                             <div style={{width : "400px", marginTop : "20px", display : "flex", flexDirection : "column", alignItems : "flex-start"}}>
-                                <div style={{color : "white", fontSize : "12px"}}>Amount</div>
+                                <div style={{color : "white", fontSize : "12px"}} onChange={(e) => this.setState({amount : e.target.value})}>Amount</div>
                                 <Input prefix="⧫" suffix="ETH" />
                             </div>
                             <div style={{width : "400px", marginTop : "20px", display : "flex", flexDirection : "column", alignItems : "flex-start"}}>
@@ -60,7 +77,7 @@ class Create extends Component {
                         </div>
                     </div>
                     <div className="create-content-footer">
-                        <Button type="primary">Submit</Button>
+                        <Button type="primary" onClick={() => this.onSubmit()}>Submit</Button>
                     </div>
                     
                 </div>

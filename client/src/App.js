@@ -8,6 +8,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Search from "./Pages/Search/Search"
 import Create from "./Pages/Create/Create"
 import Dashboard from "./Pages/Dashboard/Dashboard"
+import Analytics from "./Pages/Analytics/Analytics"
 import Navbar from "./Components/Navbarr/Navbarr"
 
 
@@ -51,7 +52,10 @@ class App extends Component {
               <Search signer={(new ethers.providers.Web3Provider(window.ethereum)).getSigner()}></Search>
             </Route>
             <Route path="/create">
-              <Create></Create>
+              <Create signer={(new ethers.providers.Web3Provider(window.ethereum)).getSigner()}></Create>
+            </Route>
+            <Route path="/analytics">
+              <Analytics signer={(new ethers.providers.Web3Provider(window.ethereum)).getSigner()}></Analytics>
             </Route>
             <Route path="/">
               <Dashboard account={this.state.account}></Dashboard>

@@ -29,7 +29,7 @@ class Bounty extends Component {
         //     this.setState({ loading: false, visible: false });
         // }, 3000);
 
-        const CONVERSION_RATE = (para) => { return (para * 1000000000000000000)}
+        const CONVERSION_RATE = (CAD) => { return (CAD * (1000000000000000000))}
 
         let etherCost = CONVERSION_RATE(this.state.amount)
 

@@ -8,7 +8,6 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var ipfsRouter = require('./routes/ipfs')
 const cors = require('cors')
-const passport = require('passport');
 
 var app = express();
 app.use(cors())

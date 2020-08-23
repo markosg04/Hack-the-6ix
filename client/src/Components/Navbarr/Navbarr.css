@@ -1,6 +1,6 @@
 .navbar-div{
     width: 280px;
-    height: 100%;
+    height: inherit;
     min-height: 100vh;
     background: #24292e;
     display: flex;

@@ -73,8 +73,9 @@ router.get('/receiveIpfsHash', async (req, res) => { // Debug Purposes
     const ipfshash = await Contract.get();
     res.send(ipfshash);
 });
+
 /* obj for report 
-    name of bounty: rails,
+    name: rails,
     contributors: {
         ben: 50,
         allah: 20,

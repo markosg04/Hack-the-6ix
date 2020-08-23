@@ -5,6 +5,7 @@
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
     "antd": "^4.5.4",
+    "big-integer": "^1.6.48",
     "craco": "0.0.3",
     "craco-less": "^1.17.0",
     "ethers": "^5.0.8",

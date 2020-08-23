@@ -1,32 +1,40 @@
 const fetch = require("node-fetch")
+const { Octokit } = require("@octokit/core");
 
-// Sample functions via curl
-// curl -H "Accept: application/vnd.github.inertia-preview+json" https://api.github.com/users/BornaSadeghi/projects
-// curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/BornaSadeghi/Ascent
-// curl -H "Accept: application/vnd.github.v3+json" https://api.github.com/zen
+const octokit = new Octokit({ auth: `46171ba1d87f44fda96a688000d46db8da234603` });
 
+const clientId = "dcf9c523dbd3438422b7"
+const clientSecret = "0aca76c81055d2cad46eeb638603db6a049d7eae"
 const base = "https://api.github.com"
 
-// Returns a test string
-async function test() {
+async function test () {
+    const res = await fetch(base + "/zen")
+    return res.text()
+}
 
-    //const raw = JSON.stringify({'data': theBody});
+async function getUser () {
+    const res = await fetch(base + "/user")
+    return res.text()
+}
+
+async function getUserRepos () {
+    const res = await fetch(base + "/user/repos")
+    return res.text()
+}
+
+async function auth () {
     const requestOptions = {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        redirect: 'follow'
-      };
-    const res = await fetch(base + '/zen', requestOptions);
-    return res.text(); // Promise
+        client_id: clientId
+    }
+    const res = await fetch("https://github.com/login/oauth/authorize", requestOptions)
+    console.log(await res.text())
 }
 
-async function getUsers () {
-	const res = await fetch(base + '/user')
-	return res.text()
+// (async () => getUser().then(data => console.log(data)))()
+
+async function printUser() {
+    const response = await octokit.request("GET /user")
+    console.log(response)
 }
 
-const printStuff = async () => {
-    await getUsers().then(res => console.log(res))
-}
-
-printStuff()
+auth()

@@ -48,13 +48,13 @@ class App extends Component {
           <Navbar></Navbar>
           <Switch>
             <Route path="/browse">
-              <Search></Search>
+              <Search signer={(new ethers.providers.Web3Provider(window.ethereum)).getSigner()}></Search>
             </Route>
             <Route path="/create">
               <Create></Create>
             </Route>
             <Route path="/">
-              <Dashboard></Dashboard>
+              <Dashboard account={this.state.account}></Dashboard>
             </Route>
           </Switch>
         </div>
